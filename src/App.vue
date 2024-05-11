@@ -19,6 +19,12 @@ import Side from './components/Side.vue'
   </header>
 
   <RouterView />
+
+  <v-app>
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
 <style scoped>
@@ -84,3 +90,6 @@ nav a:first-of-type {
   }
 }
 </style>
+
+/* import { defineComponent } from 'vue' export default defineComponent({ name: 'App', data() {
+return { // } } }) */
