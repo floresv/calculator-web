@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import Side from './components/Side.vue'
+import Login from './components/Login.vue'
+import Home from './components/Home.vue'
 </script>
 
 <template>
@@ -11,21 +13,29 @@ import Side from './components/Side.vue'
       <Side msg="Calculator" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/">Login</RouterLink>
+        <RouterLink to="/home">Home</RouterLink>
         <RouterLink to="/records">Records</RouterLink>
         <RouterLink to="/logout">Logout</RouterLink>
       </nav>
     </div>
   </header>
-
   <RouterView />
-
-  <v-app>
-    <v-main>
-      <router-view />
-    </v-main>
-  </v-app>
 </template>
+
+<script lang="ts">
+export default {
+  name: 'App',
+  components: {
+    Side,
+    Login,
+    Home
+  },
+  data: () => ({
+    //
+  })
+}
+</script>
 
 <style scoped>
 header {
@@ -90,6 +100,3 @@ nav a:first-of-type {
   }
 }
 </style>
-
-/* import { defineComponent } from 'vue' export default defineComponent({ name: 'App', data() {
-return { // } } }) */

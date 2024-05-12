@@ -15,7 +15,7 @@ defineProps<{
       </p>
       <p>It runs on cloud servers and uses Python to perform the calculations.</p>
       <p>Each calculation has a cost.</p>
-      <p>Balance: 0</p>
+      <p><strong>Balance: 0</strong></p>
     </h3>
   </div>
 </template>

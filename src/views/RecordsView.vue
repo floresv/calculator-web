@@ -1,7 +1,9 @@
+<script setup lang="ts">
+import RecordsTable from '../components/RecordsTable.vue'
+</script>
+
 <template>
-  <div class="about">
-    <h1>Records</h1>
-  </div>
+  <RecordsTable />
 </template>
 
 <style>
