@@ -28,6 +28,7 @@
                       placeholder="password"
                       required
                     ></v-text-field>
+                    <div class="red--text">{{ errorMessage }}</div>
                     <v-btn type="submit" class="mt-4" color="primary" value="log in">Login</v-btn>
                   </form>
                 </v-card-text>
@@ -41,18 +42,22 @@
 </template>
 
 <script lang="ts">
+import { loginStore } from '@/stores/login'
 export default {
   name: 'Login',
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     }
   },
   methods: {
-    login() {
-      const { username } = this
-      console.log(username + 'logged in')
+    async login() {
+      const authStore = loginStore()
+      return authStore
+        .login(this.username, this.password)
+        .catch((error) => (this.errorMessage = error))
     }
   }
 }
