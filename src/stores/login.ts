@@ -37,6 +37,7 @@ export const loginStore = defineStore('login', {
       localStorage.setItem('user', JSON.stringify(response))
       console.log(response)
       router.replace({ name: 'home' })
+      return response
     },
     authHeader() {
       if (this.isLoggedIn) {
