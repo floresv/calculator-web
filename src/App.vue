@@ -13,17 +13,26 @@ import Home from './components/Home.vue'
       <Side msg="Calculator" />
 
       <nav>
-        <RouterLink to="/">Login</RouterLink>
-        <RouterLink to="/home">Home</RouterLink>
-        <RouterLink to="/records">Records</RouterLink>
-        <RouterLink to="/logout">Logout</RouterLink>
+        <RouterLink v-if="!loginStore().isLoggedIn" to="/">Login</RouterLink>
+        <RouterLink v-if="loginStore().isLoggedIn" to="/home">Home</RouterLink>
+        <RouterLink v-if="loginStore().isLoggedIn" to="/records">Records</RouterLink>
+        <!-- <v-list-item link v-if="loginStore().isLoggedIn">
+          <v-list-item-content v-on:click="logout">Log out</v-list-item-content>
+        </v-list-item> -->
       </nav>
+
+      <div>
+        <v-btn v-if="loginStore().isLoggedIn" variant="outlined" v-on:click="logout" color="green">
+          Log out
+        </v-btn>
+      </div>
     </div>
   </header>
   <RouterView />
 </template>
 
 <script lang="ts">
+import { loginStore } from '@/stores/login'
 export default {
   name: 'App',
   components: {
@@ -33,7 +42,15 @@ export default {
   },
   data: () => ({
     //
-  })
+  }),
+  methods: {
+    //
+    logout() {
+      const authStore = loginStore()
+      authStore.logout()
+      this.$router.replace({ name: 'login' })
+    }
+  }
 }
 </script>
 
