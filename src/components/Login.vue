@@ -28,7 +28,7 @@
                       placeholder="password"
                       required
                     ></v-text-field>
-                    <div class="red--text">{{ errorMessage }}</div>
+                    <div class="red--text">{{ error }}</div>
                     <v-btn type="submit" class="mt-4" color="primary" value="log in">Login</v-btn>
                   </form>
                 </v-card-text>
@@ -49,15 +49,20 @@ export default {
     return {
       username: '',
       password: '',
-      errorMessage: ''
+      error: ''
     }
   },
   methods: {
     async login() {
       const authStore = loginStore()
-      return authStore
-        .login(this.username, this.password)
-        .catch((error) => (this.errorMessage = error))
+      const response = await authStore.login(this.username, this.password).catch((error) => {
+        this.error = error
+      })
+      if (response['error']) {
+        this.error = response['error']
+      } else {
+        this.$router.push('/home')
+      }
     }
   }
 }
