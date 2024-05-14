@@ -15,7 +15,6 @@ export const useRecordStore = defineStore({
       this.records = records
     },
     async getAll(params: {}) {
-      debugger
       var sortby_key = params.sortBy.length ? params.sortBy[0].key : 'id'
       sortby_key = sortby_key == 'operation' ? 'operation_id' : sortby_key
       const sortby_order = params.sortBy.length ? params.sortBy[0].order : 'desc'
