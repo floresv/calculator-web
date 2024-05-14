@@ -1,6 +1,7 @@
 <template>
   <v-form v-model="valid">
     <v-container>
+      <h1>New Operation</h1>
       <v-row>
         <v-col cols="12" md="4">
           <v-text-field
@@ -73,12 +74,7 @@ export default {
       (value) => {
         if (value) return true
 
-        return 'Name is required.'
-      },
-      (value) => {
-        if (value?.length <= 10) return true
-
-        return 'Name must be less than 10 characters.'
+        return 'Value is required'
       }
     ]
   }),
