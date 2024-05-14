@@ -12,6 +12,7 @@ interface State {
 const baseAPI = 'http://localhost:5001'
 const loginUrl = `${baseAPI}/v1/login`
 const logoutUrl = `${baseAPI}/v1/logout`
+const meUrl = `${baseAPI}/v1/users/me`
 
 export const loginStore = defineStore('login', {
   state: (): State => ({
@@ -45,6 +46,11 @@ export const loginStore = defineStore('login', {
       } else {
         return {}
       }
+    },
+    async getMe() {
+      const response = await fetchWrapper.get(`${meUrl}`, undefined)
+      console.log(response)
+      return response
     }
   },
   getters: {
