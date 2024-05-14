@@ -2,6 +2,12 @@
   <v-form v-model="valid">
     <v-container>
       <h1>New Operation</h1>
+
+      <div v-if="this.authStore.isLoggedIn">
+        <h3>
+          <strong>Balance: {{ balance }}</strong>
+        </h3>
+      </div>
       <v-row>
         <v-col cols="12" md="4">
           <v-text-field
@@ -53,6 +59,7 @@
 </template>
 <script lang="ts">
 import { useOperationStore } from '@/stores/operation'
+import { loginStore } from '@/stores/login'
 export default {
   name: 'Home',
   data: () => ({
@@ -62,6 +69,8 @@ export default {
     operation: '',
     result: '',
     error: '',
+    balance: '',
+    authStore: loginStore(),
     items: [
       'addition',
       'subtraction',
@@ -92,8 +101,16 @@ export default {
         })
       if (response) {
         this.result = response['record']['operation_response']
+        this.balance = response['record']['user_balance']
       }
+    },
+    async get_balance() {
+      const response = await this.authStore.getMe()
+      this.balance = response['balance']
     }
+  },
+  mounted() {
+    this.get_balance()
   }
 }
 </script>

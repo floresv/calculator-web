@@ -1,13 +1,7 @@
-<script setup lang="ts">
-defineProps<{
-  msg: string
-}>()
-</script>
-
 <template>
   <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h2>Hello, user.</h2>
+    <h1 class="green">Calculator</h1>
+    <h2>Hello.</h2>
     <h3>
       <p>
         This calculator can do addition, subtraction, multiplication, division, square roots, and
@@ -15,7 +9,6 @@ defineProps<{
       </p>
       <p>It runs on cloud servers and uses Python to perform the calculations.</p>
       <p>Each calculation has a cost.</p>
-      <p><strong>Balance: 0</strong></p>
     </h3>
   </div>
 </template>

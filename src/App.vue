@@ -10,7 +10,7 @@ import Home from './components/Home.vue'
     <img alt="Logo" class="logo" src="@/assets/calculator.png" width="125" height="125" />
 
     <div class="wrapper">
-      <Side msg="Calculator" />
+      <Side />
 
       <nav>
         <RouterLink v-if="!loginStore().isLoggedIn" to="/">Login</RouterLink>
