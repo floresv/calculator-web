@@ -57,6 +57,9 @@
           </td>
         </tr>
       </template>
+      <template v-slot:item.actions="{ item }">
+        <v-icon size="small" @click="deleteItem(item)"> mdi-delete </v-icon>
+      </template>
     </v-data-table-server>
   </v-container>
 </template>
@@ -75,7 +78,8 @@ export default {
       },
       { title: 'Cost', key: 'amount', align: 'end' },
       { title: 'Balance', key: 'user_balance', align: 'end' },
-      { title: 'Result', key: 'operation_response', align: 'end' }
+      { title: 'Result', key: 'operation_response', align: 'end' },
+      { title: 'Actions', key: 'actions', sortable: false }
     ],
     serverItems: [],
     sortBy: 'id',
@@ -118,6 +122,13 @@ export default {
       })
       this.serverItems = response['records']
       this.totalItems = response['total']
+      this.loading = false
+    },
+    async deleteItem(item) {
+      this.loading = true
+      const recordStore = useRecordStore()
+      await recordStore.deleteRecord(item.raw.id)
+      await this.loadItems({ page: 0, sortBy: {} })
       this.loading = false
     }
   }

@@ -32,6 +32,10 @@ export const useRecordStore = defineStore({
       this.setRecords(response['records'])
       console.log(response)
       return response
+    },
+    async deleteRecord(id: string) {
+      const response = await fetchWrapper.delete(`${operationUrl}/${id}`, undefined)
+      return response
     }
   }
 })
