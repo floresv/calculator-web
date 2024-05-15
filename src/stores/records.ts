@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 import { fetchWrapper } from '@/helpers'
 
-const baseAPI = 'http://localhost:5001'
+const baseAPI = 'https://9i07df2ji0.execute-api.us-east-2.amazonaws.com'
 const operationUrl = `${baseAPI}/v1/records`
 
 export const useRecordStore = defineStore({

@@ -9,7 +9,7 @@ interface State {
 }
 
 // const baseUrl = `${import.meta.env.VITE_API_URL}/v1/login`;
-const baseAPI = 'http://localhost:5001'
+const baseAPI = 'https://9i07df2ji0.execute-api.us-east-2.amazonaws.com'
 const loginUrl = `${baseAPI}/v1/login`
 const logoutUrl = `${baseAPI}/v1/logout`
 const meUrl = `${baseAPI}/v1/users/me`
